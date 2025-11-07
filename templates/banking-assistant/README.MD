@@ -5,8 +5,8 @@ category: AI Apps & Agents # AI Apps & Agents | App Modernization | Data Centric
 industry: Finantial Services # Finantial Services | Healthcare & Life Sciences | Manufacturing | Retail & Consumer Goods | Government & Public Sector | Education | Energy & Resources | Telco & Media | Mobility & Automotive
 languages: [.NET/C#, Python, TypeScript] # .NET/C# | Python | Java | Go | TypeSscript | JavaScript
 services: [Azure AI Foundry, Azure Container Apps] # Full list here: https://azure.microsoft.com/en-us/products/
-
-thumbnail: thumbnail.png
+thumbnail: thumbnail.png # 16:9 aspect ratio: 1280 × 720 (HD), 1920 × 1080 (Full HD), 2560 × 1440 (QHD)
+video: 
 version: 1.0
 ---
 
