@@ -59,8 +59,8 @@
 
                 <div class="filters-row">
                     <div class="filter-group">
-                        <label for="sort-select">Sort by:</label>
-                        <select id="sort-select" aria-label="Sort templates">
+                        <label for="sort-filter">Sort by:</label>
+                        <select id="sort-filter" aria-label="Sort templates">
                             <option value="alpha-asc">A-Z</option>
                             <option value="alpha-desc">Z-A</option>
                             <option value="date-desc">Newest First</option>
@@ -69,36 +69,36 @@
                     </div>
 
                     <div class="filter-group">
-                        <label for="category-select">Category:</label>
-                        <select id="category-select" aria-label="Filter by category">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" aria-label="Filter by category">
                             <option value="">All Categories</option>
                         </select>
                     </div>
 
                     <div class="filter-group">
-                        <label for="industry-select">Industry:</label>
-                        <select id="industry-select" aria-label="Filter by industry">
+                        <label for="industry-filter">Industry:</label>
+                        <select id="industry-filter" aria-label="Filter by industry">
                             <option value="">All Industries</option>
                         </select>
                     </div>
 
-                    <button id="filters-toggle" class="btn-secondary">More Filters</button>
+                    <button onclick="toggleAdvancedFilters()" class="btn-secondary">More Filters</button>
                 </div>
 
                 <div id="advanced-filters" class="advanced-filters" style="display: none;">
                     <div class="filter-group-checkboxes">
                         <h4>Languages</h4>
-                        <div id="languages-filter" class="checkbox-group"></div>
+                        <div id="language-filters" class="checkbox-group"></div>
                     </div>
 
                     <div class="filter-group-checkboxes">
                         <h4>Services</h4>
-                        <div id="services-filter" class="checkbox-group"></div>
+                        <div id="service-filters" class="checkbox-group"></div>
                     </div>
 
                     <div class="filter-group-checkboxes">
                         <h4>Frameworks</h4>
-                        <div id="frameworks-filter" class="checkbox-group"></div>
+                        <div id="framework-filters" class="checkbox-group"></div>
                     </div>
                 </div>
             </div>
