@@ -7,7 +7,7 @@ languages: [.NET, Python, TypeScript] # .NET | Python | Java | Go | TypeSscript 
 services: [Azure AI Foundry, Azure Container Apps] # Full list here: https://azure.microsoft.com/en-us/products/
 frameworks: [Microsoft Agent Framework] # Microsoft Agent Framework | LangChain | Pydantic AI
 thumbnail: thumbnail.png # 16:9 aspect ratio: 1280 × 720 (HD), 1920 × 1080 (Full HD), 2560 × 1440 (QHD)
-video: # (optional) Leave it empty if there is no video
+video:  # (optional) Leave it empty if there is no video
 version: 1.0
 ---
 

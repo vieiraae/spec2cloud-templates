@@ -65,9 +65,26 @@ jobs:
           # Check if templates.json was modified
           if git diff --quiet templates.json; then
             echo "No changes to templates.json"
-          else
-            git add templates.json
-            git commit -m "chore: update templates.json metadata [skip ci]"
-            git push
-            echo "✅ Updated and committed templates.json"
+            exit 0
           fi
+          
+          # Update templates.json in pages branch only
+          echo "Updating templates.json in pages branch..."
+          git fetch origin pages:pages
+          git checkout pages
+          
+          # Copy updated templates.json to docs folder
+          cp templates.json docs/templates.json
+          
+          # Check if there are changes in docs/templates.json
+          if git diff --quiet docs/templates.json; then
+            echo "No changes to docs/templates.json"
+          else
+            git add docs/templates.json
+            git commit -m "chore: update docs/templates.json metadata [skip ci]"
+            git push origin pages
+            echo "✅ Updated and committed templates.json to pages branch"
+          fi
+          
+          # Switch back to main branch
+          git checkout main
