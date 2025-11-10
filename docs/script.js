@@ -155,7 +155,7 @@ function renderIconBadges(items, type) {
     return items.map(item => {
         const iconName = item.toLowerCase().replace(/\s+/g, '-');
         const iconPath = `media/${type}/${iconName}.svg`;
-        return `<span class="icon-badge" title="${item}">
+        return `<span class="icon-badge ${type}" title="${item}">
             <img src="${iconPath}" alt="${item}" onerror="this.style.display='none'">
             ${item}
         </span>`;
