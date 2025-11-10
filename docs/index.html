@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/spec2cloud-templates/">
     <title>Spec2Cloud - Spec-Driven Development with GitHub Copilot and Azure</title>
     <meta name="description" content="Spec-Driven Development with GitHub Copilot and Azure">
     <link rel="icon" type="image/x-icon" href="media/favicon.ico">
@@ -46,68 +47,67 @@
 
     <!-- Gallery Section -->
     <section class="gallery-section">
-        <div class="container">
-            <h2 class="section-title">Template Gallery</h2>
-            
-            <!-- Filters -->
-            <div class="filters-section">
-                <div class="search-box">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
-                    </svg>
-                    <input type="text" id="search-input" placeholder="Search templates..." aria-label="Search templates">
+        <div class="gallery-container">
+            <!-- Fixed Left Sidebar -->
+            <aside class="filters-sidebar">
+                <h3>Filters</h3>
+                
+                <div class="filter-group">
+                    <label for="sort-filter">Sort by:</label>
+                    <select id="sort-filter" aria-label="Sort templates">
+                        <option value="alpha-asc">A-Z</option>
+                        <option value="alpha-desc">Z-A</option>
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                    </select>
                 </div>
 
-                <div class="filters-row">
-                    <div class="filter-group">
-                        <label for="sort-filter">Sort by:</label>
-                        <select id="sort-filter" aria-label="Sort templates">
-                            <option value="alpha-asc">A-Z</option>
-                            <option value="alpha-desc">Z-A</option>
-                            <option value="date-desc">Newest First</option>
-                            <option value="date-asc">Oldest First</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-group">
-                        <label for="category-filter">Category:</label>
-                        <select id="category-filter" aria-label="Filter by category">
-                            <option value="">All Categories</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-group">
-                        <label for="industry-filter">Industry:</label>
-                        <select id="industry-filter" aria-label="Filter by industry">
-                            <option value="">All Industries</option>
-                        </select>
-                    </div>
-
-                    <button onclick="toggleAdvancedFilters()" class="btn-secondary">More Filters</button>
+                <div class="filter-group">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter" aria-label="Filter by category">
+                        <option value="">All Categories</option>
+                    </select>
                 </div>
 
-                <div id="advanced-filters" class="advanced-filters" style="display: none;">
-                    <div class="filter-group-checkboxes">
-                        <h4>Languages</h4>
-                        <div id="language-filters" class="checkbox-group"></div>
-                    </div>
-
-                    <div class="filter-group-checkboxes">
-                        <h4>Services</h4>
-                        <div id="service-filters" class="checkbox-group"></div>
-                    </div>
-
-                    <div class="filter-group-checkboxes">
-                        <h4>Frameworks</h4>
-                        <div id="framework-filters" class="checkbox-group"></div>
-                    </div>
+                <div class="filter-group">
+                    <label for="industry-filter">Industry:</label>
+                    <select id="industry-filter" aria-label="Filter by industry">
+                        <option value="">All Industries</option>
+                    </select>
                 </div>
-            </div>
 
-            <!-- Results count -->
-            <div class="results-info">
-                <span id="results-count">0 templates</span>
-            </div>
+                <div class="filter-group-checkboxes">
+                    <h4>Languages</h4>
+                    <div id="language-filters" class="checkbox-group"></div>
+                </div>
+
+                <div class="filter-group-checkboxes">
+                    <h4>Services</h4>
+                    <div id="service-filters" class="checkbox-group"></div>
+                </div>
+
+                <div class="filter-group-checkboxes">
+                    <h4>Frameworks</h4>
+                    <div id="framework-filters" class="checkbox-group"></div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="gallery-main">
+                <div class="container">
+                    <h2 class="section-title">Template Gallery</h2>
+                    
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                        </svg>
+                        <input type="text" id="search-input" placeholder="Search templates..." aria-label="Search templates">
+                    </div>
+
+                    <!-- Results count -->
+                    <div class="results-info">
+                        <span id="results-count">0 templates</span>
+                    </div>
 
             <!-- Gallery Grid -->
             <div id="gallery-grid" class="gallery-grid">
@@ -117,6 +117,8 @@
             <!-- No results message -->
             <div id="no-results" class="no-results" style="display: none;">
                 <p>No templates found matching your criteria.</p>
+            </div>
+                </div>
             </div>
         </div>
     </section>

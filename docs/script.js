@@ -277,20 +277,6 @@ function closeVideoModal() {
     modal.style.display = 'none';
 }
 
-// Toggle advanced filters
-function toggleAdvancedFilters() {
-    const panel = document.getElementById('advanced-filters');
-    const button = document.querySelector('[onclick="toggleAdvancedFilters()"]');
-    
-    if (panel.style.display === 'none' || panel.style.display === '') {
-        panel.style.display = 'grid';
-        button.textContent = 'Hide Filters';
-    } else {
-        panel.style.display = 'none';
-        button.textContent = 'More Filters';
-    }
-}
-
 // Attach event listeners
 function attachEventListeners() {
     document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
