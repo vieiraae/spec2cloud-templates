@@ -12,7 +12,8 @@
       "Azure Kubernetes Service"
     ],
     "frameworks": [
-      "Microsoft Agent Framework"
+      "Microsoft Agent Framework",
+      "LangChain"
     ],
     "thumbnail": "thumbnail.png",
     "video": null,
