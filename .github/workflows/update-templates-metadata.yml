@@ -1,0 +1,73 @@
+name: Update Templates Metadata
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'templates/**/README.md'
+      - 'templates/**/README.MD'
+
+permissions:
+  contents: write
+
+jobs:
+  update-templates-json:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      
+      - name: Get changed README files
+        id: changed-files
+        run: |
+          # Get list of changed README files in templates directory
+          CHANGED_READMES=$(git diff --name-only HEAD^..HEAD | grep -E '^templates/.*/README\.(md|MD)$' || true)
+          
+          if [ -z "$CHANGED_READMES" ]; then
+            echo "No README files changed"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changed README files:"
+            echo "$CHANGED_READMES"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            # Save to multiline output
+            echo "readme_files<<EOF" >> $GITHUB_OUTPUT
+            echo "$CHANGED_READMES" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Update templates.json
+        if: steps.changed-files.outputs.has_changes == 'true'
+        run: |
+          # Process each changed README file
+          while IFS= read -r readme_file; do
+            if [ -n "$readme_file" ]; then
+              echo "Processing: $readme_file"
+              python update_templates_json.py "$readme_file"
+            fi
+          done <<< "${{ steps.changed-files.outputs.readme_files }}"
+      
+      - name: Commit and push changes
+        if: steps.changed-files.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Check if templates.json was modified
+          if git diff --quiet templates.json; then
+            echo "No changes to templates.json"
+          else
+            git add templates.json
+            git commit -m "chore: update templates.json metadata [skip ci]"
+            git push
+            echo "✅ Updated and committed templates.json"
+          fi
