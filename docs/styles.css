@@ -245,6 +245,18 @@ body {
     margin-bottom: var(--spacing-lg);
 }
 
+.search-sort-container {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-end;
+    margin-bottom: var(--spacing-lg);
+}
+
+.search-box {
+    flex: 1;
+    position: relative;
+}
+
 .search-box svg {
     position: absolute;
     left: var(--spacing-md);
@@ -268,6 +280,34 @@ body {
     border-color: var(--accent-primary);
 }
 
+.sort-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 200px;
+}
+
+.sort-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.sort-group select {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.sort-group select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
 .filters-row {
     display: flex;
     flex-wrap: wrap;
@@ -286,6 +326,58 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-secondary);
+}
+
+.filter-group-checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.filter-group-checkboxes label:hover {
+    background-color: var(--bg-secondary);
+}
+
+.filter-group-checkboxes input[type="checkbox"] {
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.filter-group-checkboxes .filter-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+}
+
+.filter-group-checkboxes .filter-icon.languages {
+    background-color: #f97316;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.filter-group-checkboxes .filter-icon.services {
+    background-color: #3b82f6;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.filter-group-checkboxes .filter-icon.frameworks {
+    background-color: #a855f7;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.filter-group-checkboxes span {
+    font-size: 0.875rem;
+    color: var(--text-primary);
 }
 
 .filter-group select {
@@ -638,6 +730,16 @@ body {
         width: 100%;
         max-height: none;
         top: 0;
+    }
+    
+    .search-sort-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .sort-group {
+        width: 100%;
+        min-width: auto;
     }
 
     .header-content {

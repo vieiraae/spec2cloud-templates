@@ -53,16 +53,6 @@
                 <h3>Filters</h3>
                 
                 <div class="filter-group">
-                    <label for="sort-filter">Sort by:</label>
-                    <select id="sort-filter" aria-label="Sort templates">
-                        <option value="alpha-asc">A-Z</option>
-                        <option value="alpha-desc">Z-A</option>
-                        <option value="date-desc">Newest First</option>
-                        <option value="date-asc">Oldest First</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
                     <label for="category-filter">Category:</label>
                     <select id="category-filter" aria-label="Filter by category">
                         <option value="">All Categories</option>
@@ -97,11 +87,23 @@
                 <div class="container">
                     <h2 class="section-title">Template Gallery</h2>
                     
-                    <div class="search-box">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
-                        </svg>
-                        <input type="text" id="search-input" placeholder="Search templates..." aria-label="Search templates">
+                    <div class="search-sort-container">
+                        <div class="search-box">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                            </svg>
+                            <input type="text" id="search-input" placeholder="Search templates..." aria-label="Search templates">
+                        </div>
+                        
+                        <div class="sort-group">
+                            <label for="sort-filter">Sort by:</label>
+                            <select id="sort-filter" aria-label="Sort templates">
+                                <option value="alpha-asc">A-Z</option>
+                                <option value="alpha-desc">Z-A</option>
+                                <option value="date-desc">Newest First</option>
+                                <option value="date-asc">Oldest First</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Results count -->

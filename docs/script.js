@@ -75,9 +75,9 @@ function buildFilterOptions() {
 
     populateSelect('category-filter', Array.from(categories).sort());
     populateSelect('industry-filter', Array.from(industries).sort());
-    populateCheckboxes('language-filters', Array.from(languages).sort());
-    populateCheckboxes('service-filters', Array.from(services).sort());
-    populateCheckboxes('framework-filters', Array.from(frameworks).sort());
+    populateCheckboxes('language-filters', Array.from(languages).sort(), 'languages');
+    populateCheckboxes('service-filters', Array.from(services).sort(), 'services');
+    populateCheckboxes('framework-filters', Array.from(frameworks).sort(), 'frameworks');
 }
 
 function populateSelect(id, options) {
@@ -90,14 +90,18 @@ function populateSelect(id, options) {
     });
 }
 
-function populateCheckboxes(id, options) {
+function populateCheckboxes(id, options, type) {
     const container = document.getElementById(id);
-    container.innerHTML = options.map(option => `
+    container.innerHTML = options.map(option => {
+        const iconName = option.toLowerCase().replace(/\s+/g, '-');
+        const iconPath = `media/${type}/${iconName}.svg`;
+        return `
         <label>
             <input type="checkbox" value="${option}" onchange="applyFilters()">
-            ${option}
-        </label>
-    `).join('');
+            <img src="${iconPath}" alt="${option}" class="filter-icon ${type}" onerror="this.style.display='none'">
+            <span>${option}</span>
+        </label>`;
+    }).join('');
 }
 
 // Create template card HTML
