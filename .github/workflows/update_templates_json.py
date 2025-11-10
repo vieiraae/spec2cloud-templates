@@ -73,7 +73,7 @@ def update_templates_json(readme_path: str, repo_root: str) -> None:
         return
     
     template_name = get_template_name_from_path(readme_path)
-    templates_json_path = Path(repo_root) / 'templates.json'
+    templates_json_path = Path(repo_root) / 'docs/templates.json'
     
     if templates_json_path.exists():
         with open(templates_json_path, 'r', encoding='utf-8') as f:
