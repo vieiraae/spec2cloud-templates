@@ -52,7 +52,7 @@ jobs:
           while IFS= read -r readme_file; do
             if [ -n "$readme_file" ]; then
               echo "Processing: $readme_file"
-              python update_templates_json.py "$readme_file"
+              python .github/workflows/update_templates_json.py "$readme_file"
             fi
           done <<< "${{ steps.changed-files.outputs.readme_files }}"
       
