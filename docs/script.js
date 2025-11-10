@@ -104,7 +104,9 @@ function populateCheckboxes(id, options) {
 function createTemplateCard(template, isFeatured = false) {
     const title = truncateText(template.title, 60);
     const description = truncateText(template.description, 200);
-    const thumbnailUrl = template.thumbnail || 'https://via.placeholder.com/640x360?text=No+Image';
+    const thumbnailUrl = template.thumbnail 
+        ? `../templates/${template.id}/${template.thumbnail}` 
+        : 'https://via.placeholder.com/640x360?text=No+Image';
     const hasVideo = template.video && template.video !== '';
     const vscodeUrl = `vscode://yourpublisher.spec2cloud/command/spec2cloud.createProject?${encodeURIComponent(JSON.stringify({ template: template.id }))}`;
 
@@ -152,7 +154,7 @@ function renderIconBadges(items, type) {
     
     return items.map(item => {
         const iconName = item.toLowerCase().replace(/\s+/g, '-');
-        const iconPath = `./media/${type}/${iconName}.svg`;
+        const iconPath = `media/${type}/${iconName}.svg`;
         return `<span class="icon-badge" title="${item}">
             <img src="${iconPath}" alt="${item}" onerror="this.style.display='none'">
             ${item}
