@@ -1,0 +1,62 @@
+{
+  "content-moderation-agent": {
+    "title": "Content Moderation Agent",
+    "description": "An AI content moderator that automatically reviews user-generated content, detects harmful material, and ensures platform safety across social media and forums.",
+    "category": "AI Apps & Agents",
+    "industry": "Telco & Media",
+    "languages": [
+      "Java"
+    ],
+    "services": [
+      "Azure AI Foundry",
+      "Azure Kubernetes Service"
+    ],
+    "frameworks": [
+      "Microsoft Agent Framework",
+      "LangChain"
+    ],
+    "thumbnail": "thumbnail.png",
+    "video": null,
+    "version": "1.0"
+  },
+  "banking-assistant": {
+    "title": "Intelligent Banking Assistant for Finantial Services for Finantial",
+    "description": "A banking assistant that delivers personalized financial advice, transaction analysis, and fraud detection--.",
+    "category": "AI Apps & Agents",
+    "industry": "Finantial Services",
+    "languages": [
+      ".NET",
+      "Python",
+      "TypeScript"
+    ],
+    "services": [
+      "Azure AI Foundry",
+      "Azure Container Apps"
+    ],
+    "frameworks": [
+      "Microsoft Agent Framework"
+    ],
+    "thumbnail": "thumbnail.png",
+    "video": null,
+    "version": "1.0"
+  },
+  "biometric-security-system": {
+    "title": "Biometric Security System",
+    "description": "An advanced identity verification AI that uses facial recognition, fingerprint analysis, and behavioral biometrics to provide secure access control and threat detection!",
+    "category": "AI Apps & Agents",
+    "industry": "Government & Public Sector",
+    "languages": [
+      "Java"
+    ],
+    "services": [
+      "Azure AI Foundry",
+      "Azure Kubernetes Service"
+    ],
+    "frameworks": [
+      "Microsoft Agent Framework"
+    ],
+    "thumbnail": "thumbnail.png",
+    "video": null,
+    "version": "1.0"
+  }
+}
