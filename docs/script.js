@@ -105,7 +105,7 @@ function createTemplateCard(template, isFeatured = false) {
     const title = truncateText(template.title, 60);
     const description = truncateText(template.description, 200);
     const thumbnailUrl = template.thumbnail 
-        ? `../templates/${template.id}/${template.thumbnail}` 
+        ? `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.thumbnail}` 
         : 'https://via.placeholder.com/640x360?text=No+Image';
     const hasVideo = template.video && template.video !== '';
     const vscodeUrl = `vscode://yourpublisher.spec2cloud/command/spec2cloud.createProject?${encodeURIComponent(JSON.stringify({ template: template.id }))}`;
