@@ -147,6 +147,15 @@ body {
     background-color: var(--bg-secondary);
 }
 
+[data-theme="dark"] .btn-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .btn-icon:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
 .theme-icon {
     transition: opacity 0.3s ease;
     display: block;
