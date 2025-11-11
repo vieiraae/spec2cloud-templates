@@ -29,6 +29,9 @@ jobs:
       - name: Get changed README files
         id: changed-files
         run: |
+          # First, fetch the pages branch
+          git fetch origin pages:pages
+
           # Get list of changed README files in templates directory
           CHANGED_READMES=$(git diff --name-only HEAD^..HEAD | grep -E '^templates/.*/README\.(md|MD)$' || true)
           
@@ -66,10 +69,7 @@ jobs:
           echo "Updating templates.json in pages branch..."
           git fetch origin pages:pages
           git checkout pages
-          
-          # Copy updated templates.json to docs folder
-          cp templates.json docs/templates.json
-          
+                    
           # Check if there are changes in docs/templates.json
           if git diff --quiet docs/templates.json; then
             echo "No changes to docs/templates.json"
