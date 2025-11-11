@@ -112,6 +112,7 @@ function createTemplateCard(template, isFeatured = false) {
         ? `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.thumbnail}` 
         : 'https://via.placeholder.com/640x360?text=No+Image';
     const hasVideo = template.video && template.video !== '';
+    const videoUrl = hasVideo ? `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.video}` : '';
     const vscodeUrl = `vscode://yourpublisher.spec2cloud/command/spec2cloud.createProject?${encodeURIComponent(JSON.stringify({ template: template.id }))}`;
 
     return `
@@ -119,7 +120,7 @@ function createTemplateCard(template, isFeatured = false) {
             <div class="template-thumbnail">
                 <img src="${thumbnailUrl}" alt="${title}" loading="lazy">
                 ${hasVideo ? `
-                    <button class="video-play-button" onclick="openVideoModal('${template.video}')">
+                    <button class="video-play-button" onclick="openVideoModal('${videoUrl}')">
                         <svg viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
