@@ -98,5 +98,14 @@
     "category": "AI Apps & Agents",
     "industry": "Energy & Resources",
     "last-commit-date": "2025-11-11 17:56:57 +0000"
+  },
+  "virtual-veterinarian": {
+    "title": "Virtual Veterinarian",
+    "description": "A pet health AI that diagnoses symptoms, provides care guidance, tracks animal health records, and connects pet owners with veterinary professionals.",
+    "thumbnail": "thumbnail.png",
+    "version": "1.0",
+    "category": "AI Apps & Agents",
+    "industry": "Healthcare & Life Sciences",
+    "last-commit-date": "2025-11-11 18:05:27 +0000"
   }
 }
