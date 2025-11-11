@@ -124,6 +124,16 @@ function createTemplateCard(template, isFeatured = false) {
     // Format last commit date
     const lastCommitDate = template['last-commit-date'] ? formatDate(template['last-commit-date']) : '';
     const version = template.version || '';
+    
+    // Count total badges (services, languages, frameworks)
+    const serviceCount = template.services ? template.services.length : 0;
+    const languageCount = template.languages ? template.languages.length : 0;
+    const frameworkCount = template.frameworks ? template.frameworks.length : 0;
+    const totalBadges = serviceCount + languageCount + frameworkCount;
+    
+    // Determine if we need overflow badge (limit to ~8 visible badges)
+    const maxVisibleBadges = 8;
+    const hasOverflow = totalBadges > maxVisibleBadges;
 
     return `
         <div class="template-card ${isFeatured ? 'featured' : ''}" data-template='${JSON.stringify(template)}'>
@@ -138,7 +148,7 @@ function createTemplateCard(template, isFeatured = false) {
                 ` : ''}
             </div>
             <div class="template-content">
-                <h3 class="template-title">${title}</h3>
+                <h3 class="template-title" onclick='openTemplateModal(${JSON.stringify(template).replace(/'/g, "&#39;")})'>${title}</h3>
                 <p class="template-description">${description}</p>
                 <div class="template-metadata">
                     ${version ? `<span class="badge version-badge">v${version}</span>` : ''}
@@ -148,10 +158,11 @@ function createTemplateCard(template, isFeatured = false) {
                     ${template.category ? `<span class="badge category">${template.category}</span>` : ''}
                     ${template.industry ? `<span class="badge industry">${template.industry}</span>` : ''}
                 </div>
-                <div class="icon-badges">
-                    ${renderIconBadges(template.languages, 'languages')}
-                    ${renderIconBadges(template.services, 'services')}
-                    ${renderIconBadges(template.frameworks, 'frameworks')}
+                <div class="icon-badges" data-template-id="${template.id}">
+                    ${renderIconBadges(template.services, 'services', hasOverflow ? maxVisibleBadges : null, 0)}
+                    ${renderIconBadges(template.languages, 'languages', hasOverflow ? maxVisibleBadges : null, serviceCount)}
+                    ${renderIconBadges(template.frameworks, 'frameworks', hasOverflow ? maxVisibleBadges : null, serviceCount + languageCount)}
+                    ${hasOverflow ? `<span class="icon-badge overflow-badge" onclick='openTemplateModal(${JSON.stringify(template).replace(/'/g, "&#39;")})' title="View all">...</span>` : ''}
                 </div>
                 <div class="template-actions">
                     <a href="https://github.com/vieiraae/spec2cloud-templates/tree/main/templates/${template.id}" 
@@ -168,10 +179,18 @@ function createTemplateCard(template, isFeatured = false) {
     `;
 }
 
-function renderIconBadges(items, type) {
+function renderIconBadges(items, type, maxTotal = null, offset = 0) {
     if (!items || items.length === 0) return '';
     
-    return items.map(item => {
+    // Calculate how many badges to show for this type
+    let itemsToShow = items;
+    if (maxTotal !== null) {
+        const remaining = maxTotal - offset;
+        if (remaining <= 0) return '';
+        itemsToShow = items.slice(0, Math.max(0, remaining));
+    }
+    
+    return itemsToShow.map(item => {
         let iconName = item.toLowerCase().replace(/\s+/g, '-');
         
         // Special case: .NET should use dotnet.svg
@@ -329,16 +348,123 @@ function closeVideoModal() {
     modal.style.display = 'none';
 }
 
+function openTemplateModal(template) {
+    const modal = document.getElementById('template-modal');
+    const modalContent = document.getElementById('template-modal-content');
+    
+    const thumbnailUrl = template.thumbnail 
+        ? `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.thumbnail}` 
+        : 'https://via.placeholder.com/640x360?text=No+Image';
+    
+    const lastCommitDate = template['last-commit-date'] ? formatDate(template['last-commit-date']) : '';
+    const version = template.version || '';
+    
+    const vscodeUrl = `vscode://yourpublisher.spec2cloud/command/spec2cloud.createProject?${encodeURIComponent(JSON.stringify({ template: template.id }))}`;
+    
+    modalContent.innerHTML = `
+        <div class="modal-header">
+            <h2>${template.title}</h2>
+            <button class="modal-close" onclick="closeTemplateModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-thumbnail">
+                <img src="${thumbnailUrl}" alt="${template.title}">
+            </div>
+            <div class="modal-info">
+                <div class="modal-metadata">
+                    ${version ? `<span class="badge version-badge">v${version}</span>` : ''}
+                    ${lastCommitDate ? `<span class="template-last-commit">Last updated: ${lastCommitDate}</span>` : ''}
+                </div>
+                ${template.category || template.industry ? `
+                <div class="modal-categories">
+                    ${template.category ? `<span class="badge category">${template.category}</span>` : ''}
+                    ${template.industry ? `<span class="badge industry">${template.industry}</span>` : ''}
+                </div>
+                ` : ''}
+                <div class="modal-description">
+                    <h3>Description</h3>
+                    <p>${template.description}</p>
+                </div>
+                ${template.services && template.services.length > 0 ? `
+                <div class="modal-section">
+                    <h3>Services</h3>
+                    <div class="modal-badges">
+                        ${renderIconBadges(template.services, 'services')}
+                    </div>
+                </div>
+                ` : ''}
+                ${template.languages && template.languages.length > 0 ? `
+                <div class="modal-section">
+                    <h3>Languages</h3>
+                    <div class="modal-badges">
+                        ${renderIconBadges(template.languages, 'languages')}
+                    </div>
+                </div>
+                ` : ''}
+                ${template.frameworks && template.frameworks.length > 0 ? `
+                <div class="modal-section">
+                    <h3>Frameworks</h3>
+                    <div class="modal-badges">
+                        ${renderIconBadges(template.frameworks, 'frameworks')}
+                    </div>
+                </div>
+                ` : ''}
+                <div class="modal-actions">
+                    <a href="https://github.com/vieiraae/spec2cloud-templates/tree/main/templates/${template.id}" 
+                       target="_blank" 
+                       class="btn-secondary">
+                        View on GitHub
+                    </a>
+                    <a href="${vscodeUrl}" class="btn-primary">
+                        Download to VS Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'flex';
+}
+
+function closeTemplateModal() {
+    const modal = document.getElementById('template-modal');
+    modal.style.display = 'none';
+}
+
 // Close modal when clicking outside the video
 document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('video-modal');
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
+    const videoModal = document.getElementById('video-modal');
+    if (videoModal) {
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
                 closeVideoModal();
             }
         });
     }
+    
+    const templateModal = document.getElementById('template-modal');
+    if (templateModal) {
+        templateModal.addEventListener('click', function(e) {
+            if (e.target === templateModal) {
+                closeTemplateModal();
+            }
+        });
+    }
+    
+    // Close modals on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const videoModal = document.getElementById('video-modal');
+            const templateModal = document.getElementById('template-modal');
+            
+            if (videoModal && videoModal.style.display === 'flex') {
+                closeVideoModal();
+            }
+            if (templateModal && templateModal.style.display === 'flex') {
+                closeTemplateModal();
+            }
+        }
+    });
 });
 
 // Attach event listeners
