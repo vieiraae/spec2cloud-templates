@@ -19,5 +19,24 @@
     "thumbnail": "thumbnail.png",
     "video": "Spec2Cloud Toolkit.mp4",
     "version": "1.0"
+  },
+  "biometric-security-system": {
+    "title": "Biometric Security System",
+    "description": "An advanced identity verification AI that uses facial recognition, fingerprint analysis, and behavioral biometrics to provide secure access control and threat detection!!!!",
+    "category": "AI Apps & Agents",
+    "industry": "Government & Public Sector",
+    "languages": [
+      "Java"
+    ],
+    "services": [
+      "Azure AI Foundry",
+      "Azure Kubernetes Service"
+    ],
+    "frameworks": [
+      "Microsoft Agent Framework"
+    ],
+    "thumbnail": "thumbnail.png",
+    "video": null,
+    "version": "1.0"
   }
 }
