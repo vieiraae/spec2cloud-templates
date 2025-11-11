@@ -25,3 +25,5 @@ Azure will be used to provide the following services under the resource group la
 
 BICEP will be used to provision the infrastructure on Azure with the Azure Developer CLI. The container apps will use cloud build so that docker is not needed in the local machine. 
 The frontend with the UI, the backend agent and the weather MCP servers should be deployed to container apps and the endpoints should be updated accordingly. When the deployment finishes a working weather APP should be available to the user.
+
+
