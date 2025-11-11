@@ -93,7 +93,13 @@ function populateSelect(id, options) {
 function populateCheckboxes(id, options, type) {
     const container = document.getElementById(id);
     container.innerHTML = options.map(option => {
-        const iconName = option.toLowerCase().replace(/\s+/g, '-');
+        let iconName = option.toLowerCase().replace(/\s+/g, '-');
+        
+        // Special case: .NET should use dotnet.svg
+        if (option === '.NET') {
+            iconName = 'dotnet';
+        }
+        
         const iconPath = `media/${type}/${iconName}.svg`;
         return `
         <label>
@@ -158,7 +164,13 @@ function renderIconBadges(items, type) {
     if (!items || items.length === 0) return '';
     
     return items.map(item => {
-        const iconName = item.toLowerCase().replace(/\s+/g, '-');
+        let iconName = item.toLowerCase().replace(/\s+/g, '-');
+        
+        // Special case: .NET should use dotnet.svg
+        if (item === '.NET') {
+            iconName = 'dotnet';
+        }
+        
         const iconPath = `media/${type}/${iconName}.svg`;
         return `<span class="icon-badge ${type}" title="${item}">
             <img src="${iconPath}" alt="${item}" onerror="this.style.display='none'">
