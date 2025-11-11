@@ -7,7 +7,7 @@
     "services": [
       "Azure AI Foundry",
       "Azure Container Apps",
-      "Azure API Manageemnt",
+      "Azure API Management",
       "Azure SQL Database",
       "Azure Monitor",
       "Azure API Center"
@@ -27,7 +27,7 @@
     "thumbnail": "thumbnail.png",
     "video": "Spec2Cloud Toolkit.mp4",
     "version": "1.0",
-    "last-commit-date": "2025-11-11 16:53:00 +0000"
+    "last-commit-date": "2025-11-11 17:00:59 +0000"
   },
   "biometric-security-system": {
     "title": "Biometric Security System",
