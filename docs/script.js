@@ -123,6 +123,7 @@ function createTemplateCard(template, isFeatured = false) {
     
     // Format last commit date
     const lastCommitDate = template['last-commit-date'] ? formatDate(template['last-commit-date']) : '';
+    const version = template.version || '';
 
     return `
         <div class="template-card ${isFeatured ? 'featured' : ''}" data-template='${JSON.stringify(template)}'>
@@ -139,7 +140,10 @@ function createTemplateCard(template, isFeatured = false) {
             <div class="template-content">
                 <h3 class="template-title">${title}</h3>
                 <p class="template-description">${description}</p>
-                ${lastCommitDate ? `<div class="template-last-commit">Last updated: ${lastCommitDate}</div>` : ''}
+                <div class="template-metadata">
+                    ${version ? `<span class="badge version-badge">v${version}</span>` : ''}
+                    ${lastCommitDate ? `<span class="template-last-commit">Last updated: ${lastCommitDate}</span>` : ''}
+                </div>
                 <div class="template-badges">
                     ${template.category ? `<span class="badge category">${template.category}</span>` : ''}
                     ${template.industry ? `<span class="badge industry">${template.industry}</span>` : ''}
