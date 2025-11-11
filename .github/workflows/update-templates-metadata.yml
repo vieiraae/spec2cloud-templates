@@ -29,9 +29,6 @@ jobs:
       - name: Get changed README files
         id: changed-files
         run: |
-          # First, fetch the pages branch
-          git fetch origin pages:pages
-
           # Get list of changed README files in templates directory
           CHANGED_READMES=$(git diff --name-only HEAD^..HEAD | grep -E '^templates/.*/README\.(md|MD)$' || true)
           
@@ -51,6 +48,9 @@ jobs:
       - name: Update templates.json
         if: steps.changed-files.outputs.has_changes == 'true'
         run: |
+          # First, fetch the pages branch
+          git fetch origin pages:pages
+
           # Process each changed README file
           while IFS= read -r readme_file; do
             if [ -n "$readme_file" ]; then
