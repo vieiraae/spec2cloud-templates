@@ -161,6 +161,7 @@ body {
 }
 
 [data-theme="dark"] .sun-icon {
+    display: block !important;
     opacity: 1;
     filter: brightness(3) saturate(2);
 }
