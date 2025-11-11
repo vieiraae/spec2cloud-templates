@@ -120,6 +120,9 @@ function createTemplateCard(template, isFeatured = false) {
     const hasVideo = template.video && template.video !== '';
     const videoUrl = hasVideo ? `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.video}` : '';
     const vscodeUrl = `vscode://yourpublisher.spec2cloud/command/spec2cloud.createProject?${encodeURIComponent(JSON.stringify({ template: template.id }))}`;
+    
+    // Format last commit date
+    const lastCommitDate = template['last-commit-date'] ? formatDate(template['last-commit-date']) : '';
 
     return `
         <div class="template-card ${isFeatured ? 'featured' : ''}" data-template='${JSON.stringify(template)}'>
@@ -136,6 +139,7 @@ function createTemplateCard(template, isFeatured = false) {
             <div class="template-content">
                 <h3 class="template-title">${title}</h3>
                 <p class="template-description">${description}</p>
+                ${lastCommitDate ? `<div class="template-last-commit">Last updated: ${lastCommitDate}</div>` : ''}
                 <div class="template-badges">
                     ${template.category ? `<span class="badge category">${template.category}</span>` : ''}
                     ${template.industry ? `<span class="badge industry">${template.industry}</span>` : ''}
@@ -183,6 +187,23 @@ function truncateText(text, maxLength) {
     if (!text) return '';
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + '...';
+}
+
+function formatDate(dateString) {
+    if (!dateString) return '';
+    try {
+        // Parse date string format: "YYYY-MM-DD HH:MM:SS +ZZZZ"
+        const date = new Date(dateString);
+        // Return user-friendly format like "Nov 11, 2025"
+        return date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric' 
+        });
+    } catch (e) {
+        console.error('Error formatting date:', dateString, e);
+        return '';
+    }
 }
 
 // Render gallery

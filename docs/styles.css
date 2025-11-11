@@ -561,6 +561,14 @@ body {
     overflow: hidden;
 }
 
+.template-last-commit {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0.5rem 0;
+    font-style: italic;
+    opacity: 0.85;
+}
+
 .template-badges {
     display: flex;
     flex-wrap: wrap;
