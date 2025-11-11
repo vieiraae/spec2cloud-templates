@@ -72,6 +72,11 @@ def update_templates_json(readme_path: str, repo_root: str) -> None:
         print(f"Warning: No frontmatter found in {readme_path}")
         return
     
+    # Add last commit date from environment variable if available
+    last_commit_date = os.environ.get('LAST_COMMIT_DATE')
+    if last_commit_date:
+        metadata['last-commit-date'] = last_commit_date.strip()
+    
     template_name = get_template_name_from_path(readme_path)
     templates_json_path = Path(repo_root) / 'templates.json'
     

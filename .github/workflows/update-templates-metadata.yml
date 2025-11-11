@@ -52,6 +52,21 @@ jobs:
           while IFS= read -r readme_file; do
             if [ -n "$readme_file" ]; then
               echo "Processing: $readme_file"
+              
+              # Extract template folder name from path (templates/folder-name/README.MD → folder-name)
+              template_folder=$(dirname "$readme_file" | xargs basename)
+              
+              # Get last commit date for this template folder
+              last_commit_date=$(git log -1 --format=%ci -- "templates/$template_folder/" | head -n1)
+              
+              if [ -n "$last_commit_date" ]; then
+                echo "Last commit date for $template_folder: $last_commit_date"
+                export LAST_COMMIT_DATE="$last_commit_date"
+              else
+                echo "No commit history found for $template_folder"
+                unset LAST_COMMIT_DATE
+              fi
+              
               python .github/workflows/update_templates_json.py "$readme_file"
             fi
           done <<< "${{ steps.changed-files.outputs.readme_files }}"
