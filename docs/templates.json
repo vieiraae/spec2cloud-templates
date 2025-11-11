@@ -1,7 +1,7 @@
 {
   "banking-assistant": {
     "title": "Intelligent Banking Assistant for Finantial Services for Finantial",
-    "description": "A banking assistant that delivers personalized financial advice, transaction analysis, and fraud detection!!!!!!",
+    "description": "A banking assistant that delivers personalized financial advice, transaction analysis, and fraud detection!!",
     "category": "AI Apps & Agents",
     "industry": "Finantial Services",
     "languages": [
@@ -18,11 +18,12 @@
     ],
     "thumbnail": "thumbnail.png",
     "video": "Spec2Cloud Toolkit.mp4",
-    "version": "1.0"
+    "version": "1.0",
+    "last-commit-date": "2025-11-11 01:07:12 +0000"
   },
   "biometric-security-system": {
     "title": "Biometric Security System",
-    "description": "An advanced identity verification AI that uses facial recognition, fingerprint analysis, and behavioral biometrics to provide secure access control and threat detection!!!!",
+    "description": "An advanced identity verification AI that uses facial recognition, fingerprint analysis, and behavioral biometrics to provide secure access control and threat detection!",
     "category": "AI Apps & Agents",
     "industry": "Government & Public Sector",
     "languages": [
@@ -37,11 +38,12 @@
     ],
     "thumbnail": "thumbnail.png",
     "video": null,
-    "version": "1.0"
+    "version": "1.0",
+    "last-commit-date": "2025-11-11 01:07:12 +0000"
   },
   "cloud-cost-optimizer": {
     "title": "Cloud Cost Optimizer",
-    "description": "An intelligent cloud management platform that monitors resource usage, identifies cost savings opportunities, and automatically optimizes cloud infrastructure spending!!",
+    "description": "An intelligent cloud management platform that monitors resource usage, identifies cost savings opportunities, and automatically optimizes cloud infrastructure spending!",
     "category": "App Modernization",
     "industry": "Telco & Media",
     "languages": [
@@ -56,11 +58,12 @@
     ],
     "thumbnail": "thumbnail.png",
     "video": null,
-    "version": "1.0"
+    "version": "1.0",
+    "last-commit-date": "2025-11-11 01:07:12 +0000"
   },
   "content-moderation-agent": {
     "title": "Content Moderation Agent",
-    "description": "An AI content moderator that automatically reviews user-generated content, detects harmful material, and ensures platform safety across social media and forums!!",
+    "description": "An AI content moderator that automatically reviews user-generated content, detects harmful material, and ensures platform safety across social media and forums!",
     "category": "AI Apps & Agents",
     "industry": "Telco & Media",
     "languages": [
@@ -76,6 +79,7 @@
     ],
     "thumbnail": "thumbnail.png",
     "video": null,
-    "version": "1.0"
+    "version": "1.0",
+    "last-commit-date": "2025-11-11 01:07:12 +0000"
   }
 }
