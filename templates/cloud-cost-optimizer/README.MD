@@ -1,6 +1,6 @@
 ---
 title: Cloud Cost Optimizer
-description: An intelligent cloud management platform that monitors resource usage, identifies cost savings opportunities, and automatically optimizes cloud infrastructure spending!
+description: An intelligent cloud management platform that monitors resource usage, identifies cost savings opportunities, and automatically optimizes cloud infrastructure spending!!
 category: App Modernization # AI Apps & Agents | App Modernization | Data Centric Apps
 industry: Telco & Media # Finantial Services | Healthcare & Life Sciences | Manufacturing | Retail & Consumer Goods | Government & Public Sector | Education | Energy & Resources | Telco & Media | Mobility & Automotive
 languages: [Java] # .NET | Python | Java | Go | TypeSscript | JavaScript
