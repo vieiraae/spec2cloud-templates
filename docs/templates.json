@@ -1,23 +1,21 @@
 {
-  "banking-assistant": {
-    "title": "Intelligent Banking Assistant for Finantial Services for Finantial",
-    "description": "A banking assistant that delivers personalized financial advice, transaction analysis, and fraud detection!!",
+  "biometric-security-system": {
+    "title": "Biometric Security System",
+    "description": "An advanced identity verification AI that uses facial recognition, fingerprint analysis, and behavioral biometrics to provide secure access control and threat detection!!!",
     "category": "AI Apps & Agents",
-    "industry": "Finantial Services",
+    "industry": "Government & Public Sector",
     "languages": [
-      ".NET",
-      "Python",
-      "TypeScript"
+      "Java"
     ],
     "services": [
       "Azure AI Foundry",
-      "Azure Container Apps"
+      "Azure Kubernetes Service"
     ],
     "frameworks": [
       "Microsoft Agent Framework"
     ],
     "thumbnail": "thumbnail.png",
-    "video": "Spec2Cloud Toolkit.mp4",
+    "video": null,
     "version": "1.0"
   }
 }
