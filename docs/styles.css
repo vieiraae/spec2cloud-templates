@@ -163,11 +163,11 @@ body {
 [data-theme="dark"] .sun-icon {
     opacity: 1;
     filter: brightness(3) saturate(2);
-    color: #ffeb3b;
 }
 
 [data-theme="dark"] .btn-icon {
     background-color: rgba(255, 235, 59, 0.15);
+    color: #ffeb3b !important;
 }
 
 [data-theme="dark"] .btn-icon:hover {
