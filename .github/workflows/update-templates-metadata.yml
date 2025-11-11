@@ -83,13 +83,16 @@ jobs:
             exit 1
           fi
           
+          # Store templates.json content in a variable
+          TEMPLATES_JSON_CONTENT=$(cat templates.json)
+          
           # Fetch and checkout pages branch
           git fetch origin pages:pages
           git checkout pages
           
-          # Copy templates.json to docs/templates.json
-          cp templates.json docs/templates.json
-          echo "✅ Copied templates.json to docs/templates.json in pages branch"
+          # Write the content to docs/templates.json
+          echo "$TEMPLATES_JSON_CONTENT" > docs/templates.json
+          echo "✅ Updated docs/templates.json in pages branch with content from main"
       
       - name: Commit and push changes
         if: steps.changed-files.outputs.has_changes == 'true'
