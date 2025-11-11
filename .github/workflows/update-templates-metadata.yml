@@ -50,6 +50,7 @@ jobs:
         run: |
           # First, fetch the pages branch
           git fetch origin pages:pages
+          git checkout pages
 
           # Process each changed README file
           while IFS= read -r readme_file; do
