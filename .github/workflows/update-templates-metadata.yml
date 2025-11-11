@@ -53,17 +53,14 @@ jobs:
             if [ -n "$readme_file" ]; then
               echo "Processing: $readme_file"
               
-              # Extract template folder name from path (templates/folder-name/README.MD → folder-name)
-              template_folder=$(dirname "$readme_file" | xargs basename)
-              
-              # Get last commit date for this template folder
-              last_commit_date=$(git log -1 --format=%ci -- "templates/$template_folder/" | head -n1)
+              # Get last commit date for this specific README file
+              last_commit_date=$(git log -1 --format=%ci -- "$readme_file" | head -n1)
               
               if [ -n "$last_commit_date" ]; then
-                echo "Last commit date for $template_folder: $last_commit_date"
+                echo "Last commit date for $readme_file: $last_commit_date"
                 export LAST_COMMIT_DATE="$last_commit_date"
               else
-                echo "No commit history found for $template_folder"
+                echo "No commit history found for $readme_file"
                 unset LAST_COMMIT_DATE
               fi
               
