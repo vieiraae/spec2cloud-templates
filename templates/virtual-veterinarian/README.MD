@@ -9,6 +9,6 @@ industry: Healthcare & Life Sciences # Finantial Services | Healthcare & Life Sc
 
 ## Virtual Veterinarian
 
-A pet health AI that diagnoses symptoms, provides care guidance, tracks animal health records, and connects pet owners with veterinary professionals.
+A pet health AI that diagnoses symptoms, provides care guidance, tracks animal health records, and connects pet owners with veterinary professionals. 
 
 ![Virtual Veterinarian](thumbnail.png)
