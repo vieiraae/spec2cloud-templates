@@ -148,12 +148,11 @@ body {
 }
 
 [data-theme="dark"] .btn-icon {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="dark"] .btn-icon:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .theme-icon {
