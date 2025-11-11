@@ -38,5 +38,44 @@
     "thumbnail": "thumbnail.png",
     "video": null,
     "version": "1.0"
+  },
+  "cloud-cost-optimizer": {
+    "title": "Cloud Cost Optimizer",
+    "description": "An intelligent cloud management platform that monitors resource usage, identifies cost savings opportunities, and automatically optimizes cloud infrastructure spending!!",
+    "category": "App Modernization",
+    "industry": "Telco & Media",
+    "languages": [
+      "Java"
+    ],
+    "services": [
+      "Azure AI Foundry",
+      "Azure Kubernetes Service"
+    ],
+    "frameworks": [
+      "Microsoft Agent Framework"
+    ],
+    "thumbnail": "thumbnail.png",
+    "video": null,
+    "version": "1.0"
+  },
+  "content-moderation-agent": {
+    "title": "Content Moderation Agent",
+    "description": "An AI content moderator that automatically reviews user-generated content, detects harmful material, and ensures platform safety across social media and forums!!",
+    "category": "AI Apps & Agents",
+    "industry": "Telco & Media",
+    "languages": [
+      "Java"
+    ],
+    "services": [
+      "Azure AI Foundry",
+      "Azure Kubernetes Service"
+    ],
+    "frameworks": [
+      "Microsoft Agent Framework",
+      "LangChain"
+    ],
+    "thumbnail": "thumbnail.png",
+    "video": null,
+    "version": "1.0"
   }
 }
