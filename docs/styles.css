@@ -147,14 +147,6 @@ body {
     background-color: var(--bg-secondary);
 }
 
-[data-theme="dark"] .btn-icon {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-[data-theme="dark"] .btn-icon:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 .theme-icon {
     transition: opacity 0.3s ease;
     display: block;
@@ -170,7 +162,16 @@ body {
 
 [data-theme="dark"] .sun-icon {
     opacity: 1;
-    filter: brightness(2) saturate(1.5);
+    filter: brightness(3) saturate(2);
+    color: #ffeb3b;
+}
+
+[data-theme="dark"] .btn-icon {
+    background-color: rgba(255, 235, 59, 0.15);
+}
+
+[data-theme="dark"] .btn-icon:hover {
+    background-color: rgba(255, 235, 59, 0.25);
 }
 
 /* Sections */
