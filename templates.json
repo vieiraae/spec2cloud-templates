@@ -6,7 +6,11 @@
     "industry": "Finantial Services",
     "services": [
       "Azure AI Foundry",
-      "Azure Container Apps"
+      "Azure Container Apps",
+      "Azure API Manageemnt",
+      "Azure SQL Database",
+      "Azure Monitor",
+      "Azure API Center"
     ],
     "languages": [
       ".NET",
@@ -23,7 +27,7 @@
     "thumbnail": "thumbnail.png",
     "video": "Spec2Cloud Toolkit.mp4",
     "version": "1.0",
-    "last-commit-date": "2025-11-11 16:07:42 +0000"
+    "last-commit-date": "2025-11-11 16:53:00 +0000"
   },
   "biometric-security-system": {
     "title": "Biometric Security System",
@@ -70,20 +74,20 @@
     "description": "An AI content moderator that automatically reviews user-generated content, detects harmful material, and ensures platform safety across social media and forums!",
     "category": "AI Apps & Agents",
     "industry": "Telco & Media",
-    "languages": [
-      "Java"
-    ],
     "services": [
       "Azure AI Foundry",
       "Azure Kubernetes Service"
+    ],
+    "languages": [
+      "Java"
     ],
     "frameworks": [
       "Microsoft Agent Framework",
       "LangChain"
     ],
-    "thumbnail": "thumbnail.png",
+    "thumbnail": null,
     "video": null,
-    "version": "1.0",
-    "last-commit-date": "2025-11-11 01:07:12 +0000"
+    "version": "1.0.0",
+    "last-commit-date": "2025-11-11 16:53:00 +0000"
   }
 }
