@@ -578,7 +578,7 @@ body {
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
-    color: var(--text-primary);
+    color: var(--accent-primary);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -587,7 +587,7 @@ body {
 }
 
 .template-title:hover {
-    color: var(--accent-primary);
+    color: var(--accent-hover);
 }
 
 .template-description {
