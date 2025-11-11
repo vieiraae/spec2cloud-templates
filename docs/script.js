@@ -283,6 +283,8 @@ function openVideoModal(videoUrl) {
     
     videoPlayer.src = videoUrl;
     modal.style.display = 'flex';
+    // Auto-play the video
+    videoPlayer.play();
 }
 
 function closeVideoModal() {
@@ -293,6 +295,18 @@ function closeVideoModal() {
     videoPlayer.src = '';
     modal.style.display = 'none';
 }
+
+// Close modal when clicking outside the video
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('video-modal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeVideoModal();
+            }
+        });
+    }
+});
 
 // Attach event listeners
 function attachEventListeners() {

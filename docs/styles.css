@@ -140,6 +140,7 @@ body {
     padding: 0.5rem;
     width: 36px;
     height: 36px;
+    color: var(--text-primary);
 }
 
 .btn-icon:hover {
