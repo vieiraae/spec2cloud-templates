@@ -1,6 +1,6 @@
 ---
 title: Content Moderation Agent
-description: An AI content moderator that automatically reviews user-generated content, detects harmful material, and ensures platform safety across social media and forums.
+description: An AI content moderator that automatically reviews user-generated content, detects harmful material, and ensures platform safety across social media and forums!
 category: AI Apps & Agents # AI Apps & Agents | App Modernization | Data Centric Apps
 industry: Telco & Media # Finantial Services | Healthcare & Life Sciences | Manufacturing | Retail & Consumer Goods | Government & Public Sector | Education | Energy & Resources | Telco & Media | Mobility & Automotive
 languages: [Java] # .NET | Python | Java | Go | TypeSscript | JavaScript
