@@ -114,9 +114,21 @@ function populateCheckboxes(id, options, type) {
 function createTemplateCard(template, isFeatured = false) {
     const title = truncateText(template.title, 60);
     const description = truncateText(template.description, 200);
-    const thumbnailUrl = template.thumbnail 
-        ? `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.thumbnail}` 
-        : 'https://via.placeholder.com/640x360?text=No+Image';
+    
+    // Determine thumbnail URL with category-specific defaults
+    let thumbnailUrl;
+    if (template.thumbnail) {
+        thumbnailUrl = `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.thumbnail}`;
+    } else {
+        // Use category-specific default thumbnails
+        const categoryDefaults = {
+            'AI Apps & Agents': 'media/default-aiapps-thumbnail.png',
+            'App Modernization': 'media/default-appmod-thumbnail.png',
+            'Data Centric Apps': 'media/default-data-thumbnail.png'
+        };
+        thumbnailUrl = categoryDefaults[template.category] || 'https://via.placeholder.com/640x360?text=No+Image';
+    }
+    
     const hasVideo = template.video && template.video !== '';
     const videoUrl = hasVideo ? `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.video}` : '';
     const vscodeUrl = `vscode://yourpublisher.spec2cloud/command/spec2cloud.createProject?${encodeURIComponent(JSON.stringify({ template: template.id }))}`;
@@ -125,11 +137,12 @@ function createTemplateCard(template, isFeatured = false) {
     const lastCommitDate = template['last-commit-date'] ? formatDate(template['last-commit-date']) : '';
     const version = template.version || '';
     
-    // Count total badges (services, languages, frameworks)
+    // Count total badges (services, languages, frameworks, tags)
     const serviceCount = template.services ? template.services.length : 0;
     const languageCount = template.languages ? template.languages.length : 0;
     const frameworkCount = template.frameworks ? template.frameworks.length : 0;
-    const totalBadges = serviceCount + languageCount + frameworkCount;
+    const tagsCount = template.tags ? template.tags.length : 0;
+    const totalBadges = serviceCount + languageCount + frameworkCount + tagsCount;
     
     // Determine if we need overflow badge (limit to ~8 visible badges)
     const maxVisibleBadges = 8;
@@ -162,6 +175,7 @@ function createTemplateCard(template, isFeatured = false) {
                     ${renderIconBadges(template.services, 'services', hasOverflow ? maxVisibleBadges : null, 0)}
                     ${renderIconBadges(template.languages, 'languages', hasOverflow ? maxVisibleBadges : null, serviceCount)}
                     ${renderIconBadges(template.frameworks, 'frameworks', hasOverflow ? maxVisibleBadges : null, serviceCount + languageCount)}
+                    ${renderIconBadges(template.tags, 'tags', hasOverflow ? maxVisibleBadges : null, serviceCount + languageCount + frameworkCount)}
                     ${hasOverflow ? `<span class="icon-badge overflow-badge" onclick='openTemplateModal(${JSON.stringify(template).replace(/'/g, "&#39;")})' title="View all">...</span>` : ''}
                 </div>
                 <div class="template-actions">
@@ -267,7 +281,8 @@ function applyFilters() {
             (template.industry && template.industry.toLowerCase().includes(searchTerm)) ||
             (template.languages && template.languages.some(l => l.toLowerCase().includes(searchTerm))) ||
             (template.services && template.services.some(s => s.toLowerCase().includes(searchTerm))) ||
-            (template.frameworks && template.frameworks.some(f => f.toLowerCase().includes(searchTerm)));
+            (template.frameworks && template.frameworks.some(f => f.toLowerCase().includes(searchTerm))) ||
+            (template.tags && template.tags.some(t => t.toLowerCase().includes(searchTerm)));
 
         // Category filter
         const matchesCategory = !categoryFilter || template.category === categoryFilter;
@@ -352,9 +367,19 @@ function openTemplateModal(template) {
     const modal = document.getElementById('template-modal');
     const modalContent = document.getElementById('template-modal-content');
     
-    const thumbnailUrl = template.thumbnail 
-        ? `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.thumbnail}` 
-        : 'https://via.placeholder.com/640x360?text=No+Image';
+    // Determine thumbnail URL with category-specific defaults
+    let thumbnailUrl;
+    if (template.thumbnail) {
+        thumbnailUrl = `https://raw.githubusercontent.com/vieiraae/spec2cloud-templates/main/templates/${template.id}/${template.thumbnail}`;
+    } else {
+        // Use category-specific default thumbnails
+        const categoryDefaults = {
+            'AI Apps & Agents': 'media/default-aiapps-thumbnail.png',
+            'App Modernization': 'media/default-appmod-thumbnail.png',
+            'Data Centric Apps': 'media/default-data-thumbnail.png'
+        };
+        thumbnailUrl = categoryDefaults[template.category] || 'https://via.placeholder.com/640x360?text=No+Image';
+    }
     
     const lastCommitDate = template['last-commit-date'] ? formatDate(template['last-commit-date']) : '';
     const version = template.version || '';
@@ -406,6 +431,14 @@ function openTemplateModal(template) {
                     <h3>Frameworks</h3>
                     <div class="modal-badges">
                         ${renderIconBadges(template.frameworks, 'frameworks')}
+                    </div>
+                </div>
+                ` : ''}
+                ${template.tags && template.tags.length > 0 ? `
+                <div class="modal-section">
+                    <h3>Tags</h3>
+                    <div class="modal-badges">
+                        ${renderIconBadges(template.tags, 'tags')}
                     </div>
                 </div>
                 ` : ''}

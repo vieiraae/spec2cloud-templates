@@ -701,6 +701,11 @@ body {
     border-color: #9333ea;
 }
 
+.icon-badge.tags {
+    background-color: #10b981;
+    border-color: #059669;
+}
+
 .icon-badge img {
     width: 16px;
     height: 16px;
