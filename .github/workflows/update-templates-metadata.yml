@@ -68,8 +68,6 @@ jobs:
                     
           # Update templates.json in pages branch
           echo "Updating templates.json in pages branch..."
-          git fetch origin pages:pages
-          git checkout pages
                     
           # Check if there are changes in docs/templates.json
           if git diff --quiet docs/templates.json; then
