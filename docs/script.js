@@ -31,6 +31,9 @@ async function loadData() {
         }));
 
         filteredTemplates = [...allTemplates];
+        
+        // Sort by newest first by default
+        sortTemplates('date-desc');
     } catch (error) {
         console.error('Error loading data:', error);
     }
