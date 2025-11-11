@@ -58,6 +58,22 @@ jobs:
           
           echo "✅ Generated templates.json on main branch"
       
+      - name: Commit templates.json to main branch
+        if: steps.changed-files.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Check if there are changes in templates.json
+          if git diff --quiet templates.json; then
+            echo "No changes to templates.json on main branch"
+          else
+            git add templates.json
+            git commit -m "chore: update templates.json metadata [skip ci]"
+            git push origin main
+            echo "✅ Committed templates.json to main branch"
+          fi
+      
       - name: Copy to pages branch
         if: steps.changed-files.outputs.has_changes == 'true'
         run: |
