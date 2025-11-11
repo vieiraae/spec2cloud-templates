@@ -1,21 +1,23 @@
 {
-  "biometric-security-system": {
-    "title": "Biometric Security System",
-    "description": "An advanced identity verification AI that uses facial recognition, fingerprint analysis, and behavioral biometrics to provide secure access control and threat detection!!",
+  "banking-assistant": {
+    "title": "Intelligent Banking Assistant for Finantial Services for Finantial",
+    "description": "A banking assistant that delivers personalized financial advice, transaction analysis, and fraud detection!!",
     "category": "AI Apps & Agents",
-    "industry": "Government & Public Sector",
+    "industry": "Finantial Services",
     "languages": [
-      "Java"
+      ".NET",
+      "Python",
+      "TypeScript"
     ],
     "services": [
       "Azure AI Foundry",
-      "Azure Kubernetes Service"
+      "Azure Container Apps"
     ],
     "frameworks": [
       "Microsoft Agent Framework"
     ],
     "thumbnail": "thumbnail.png",
-    "video": null,
+    "video": "Spec2Cloud Toolkit.mp4",
     "version": "1.0"
   }
 }
