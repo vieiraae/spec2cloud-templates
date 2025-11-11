@@ -48,17 +48,32 @@ jobs:
       - name: Update templates.json
         if: steps.changed-files.outputs.has_changes == 'true'
         run: |
-          # First, fetch the pages branch
-          git fetch origin pages:pages
-          git checkout pages
-
-          # Process each changed README file
+          # Process each changed README file on main branch
           while IFS= read -r readme_file; do
             if [ -n "$readme_file" ]; then
               echo "Processing: $readme_file"
               python .github/workflows/update_templates_json.py "$readme_file"
             fi
           done <<< "${{ steps.changed-files.outputs.readme_files }}"
+          
+          echo "✅ Generated templates.json on main branch"
+      
+      - name: Copy to pages branch
+        if: steps.changed-files.outputs.has_changes == 'true'
+        run: |
+          # Check if templates.json was actually updated
+          if [ ! -f templates.json ]; then
+            echo "Error: templates.json not found"
+            exit 1
+          fi
+          
+          # Fetch and checkout pages branch
+          git fetch origin pages:pages
+          git checkout pages
+          
+          # Copy templates.json to docs/templates.json
+          cp templates.json docs/templates.json
+          echo "✅ Copied templates.json to docs/templates.json in pages branch"
       
       - name: Commit and push changes
         if: steps.changed-files.outputs.has_changes == 'true'
@@ -66,18 +81,16 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
                     
-          # Update templates.json in pages branch
-          echo "Updating templates.json in pages branch..."
-                    
           # Check if there are changes in docs/templates.json
           if git diff --quiet docs/templates.json; then
             echo "No changes to docs/templates.json"
+            git checkout main
           else
             git add docs/templates.json
             git commit -m "chore: update docs/templates.json metadata [skip ci]"
             git push origin pages
             echo "✅ Updated and committed templates.json to pages branch"
+            
+            # Switch back to main branch
+            git checkout main
           fi
-          
-          # Switch back to main branch
-          git checkout main
