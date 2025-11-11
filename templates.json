@@ -89,5 +89,14 @@
     "video": null,
     "version": "1.0.0",
     "last-commit-date": "2025-11-11 16:53:00 +0000"
+  },
+  "agricultural-drone-controller": {
+    "title": "Agricultural Drone Controller",
+    "description": "An intelligent drone management system that coordinates autonomous agricultural drones for crop monitoring, precision spraying, and yield optimization across large farming operations.",
+    "thumbnail": "thumbnail.png",
+    "version": "1.0",
+    "category": "AI Apps & Agents",
+    "industry": "Energy & Resources",
+    "last-commit-date": "2025-11-11 17:56:57 +0000"
   }
 }
