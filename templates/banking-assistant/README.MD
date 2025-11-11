@@ -3,7 +3,7 @@ title: Intelligent Banking Assistant for Finantial Services  # Limit to 40 chars
 description: A banking assistant that delivers personalized financial advice, transaction analysis, and fraud detection!!! # Summary with 140 chars or less; be extremely concise. Use the README to provide the full description.
 category: AI Apps & Agents # AI Apps & Agents | App Modernization | Data Centric Apps
 industry: Finantial Services # Finantial Services | Healthcare & Life Sciences | Manufacturing | Retail & Consumer Goods | Government & Public Sector | Education | Energy & Resources | Telco & Media | Mobility & Automotive
-services: [Azure AI Foundry, Azure Container Apps, Azure API Manageemnt, Azure SQL Database, Azure Monitor, Azure API Center] # Full list here: https://azure.microsoft.com/en-us/products/
+services: [Azure AI Foundry, Azure Container Apps, Azure API Management, Azure SQL Database, Azure Monitor, Azure API Center] # Full list here: https://azure.microsoft.com/en-us/products/
 languages: [.NET, Python, TypeScript] # .NET | Python | Java | Go | TypeSscript | JavaScript
 frameworks: [Microsoft Agent Framework] # Microsoft Agent Framework | LangChain | Pydantic AI
 tags: [MCP, Microservices] # Labels used to categorize the template
