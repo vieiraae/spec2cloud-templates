@@ -1,6 +1,6 @@
 ---
 title: Intelligent Banking Assistant for Finantial Services for Finantial # Limit to 60 chars or less; be extremely concise
-description: A banking assistant that delivers personalized financial advice, transaction analysis, and fraud detection!!!!! # Summary with 120 chars or less; be extremely concise. Use the README to provide the full description.
+description: A banking assistant that delivers personalized financial advice, transaction analysis, and fraud detection!!!!!! # Summary with 120 chars or less; be extremely concise. Use the README to provide the full description.
 category: AI Apps & Agents # AI Apps & Agents | App Modernization | Data Centric Apps
 industry: Finantial Services # Finantial Services | Healthcare & Life Sciences | Manufacturing | Retail & Consumer Goods | Government & Public Sector | Education | Energy & Resources | Telco & Media | Mobility & Automotive
 languages: [.NET, Python, TypeScript] # .NET | Python | Java | Go | TypeSscript | JavaScript
