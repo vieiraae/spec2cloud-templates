@@ -63,6 +63,12 @@ def update_templates_json(readme_path: str, repo_root: str) -> None:
         print(f"Error: README file not found: {readme_full_path}")
         sys.exit(1)
     
+    # Skip template folders that start with underscore
+    template_name = get_template_name_from_path(readme_path)
+    if template_name.startswith('_'):
+        print(f"Skipping template folder: {template_name} (starts with underscore)")
+        return
+    
     with open(readme_full_path, 'r', encoding='utf-8') as f:
         content = f.read()
     
