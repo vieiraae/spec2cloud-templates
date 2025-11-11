@@ -289,10 +289,18 @@ function sortTemplates(sortBy) {
             filteredTemplates.sort((a, b) => b.title.localeCompare(a.title));
             break;
         case 'date-asc':
-            filteredTemplates.sort((a, b) => (a.version || '0').localeCompare(b.version || '0'));
+            filteredTemplates.sort((a, b) => {
+                const dateA = a['last-commit-date'] ? new Date(a['last-commit-date']) : new Date(0);
+                const dateB = b['last-commit-date'] ? new Date(b['last-commit-date']) : new Date(0);
+                return dateA - dateB;
+            });
             break;
         case 'date-desc':
-            filteredTemplates.sort((a, b) => (b.version || '0').localeCompare(a.version || '0'));
+            filteredTemplates.sort((a, b) => {
+                const dateA = a['last-commit-date'] ? new Date(a['last-commit-date']) : new Date(0);
+                const dateB = b['last-commit-date'] ? new Date(b['last-commit-date']) : new Date(0);
+                return dateB - dateA;
+            });
             break;
     }
 }
