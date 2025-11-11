@@ -9,7 +9,7 @@ frameworks: [Microsoft Agent Framework] # Microsoft Agent Framework | LangChain 
 tags: [MCP, Microservices] # Labels used to categorize the template
 thumbnail: thumbnail.png # (optional) 16:9 aspect ratio: 1280 × 720 (HD), 1920 × 1080 (Full HD), 2560 × 1440 (QHD)
 video: Spec2Cloud Toolkit.mp4 # (optional) Leave it empty if there is no video
-version: 1.0 # (optional) Semantic versioning. Consider using a CHANGELOG.md with the version details
+version: 1.0 # (optional) Semantic versioning. Consider using a CHANGELOG.md with the version details 
 ---
 
 ## Intelligent Banking Assistant
